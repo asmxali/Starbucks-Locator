@@ -1,11 +1,16 @@
 <!DOCTYPE html>
+<!-- this lets the document know that this is an html file -->
 <html>
-  <head> 
+  <head>
+    <!-- information about your website like linked files  -->
     <title>Asmaa's Starbucks Locator</title>
     <link rel="stylesheet" href="style/style.css"> </link>
-  </head>
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <script src="js/store-data.js"></script>
 
+  </head>
   <body>
+
     <div id="map"></div>
     <script src="js/index.js"></script>
     <!-- what is an API key, a key that allows you to use google maps, just like your own car its unique -->
@@ -14,10 +19,33 @@
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0-1dTUpgb4f7Za4f5vey93FaMvhr13yI&amp;callback=initMap"
     ></script>
-    <div class="title"> 
-      Starbucks Locator
+    <div class="container">
+      <div class="title"> 
+        Starbucks Locator
+        <img src="https://66.media.tumblr.com/77f14fa773d1e1b8ea5aa022a2bc1732/tumblr_mvog5nYQlu1so47sso1_1280.png"/>
       </div>
-
+      <div class="search-container"> 
+        <div class="search" >
+          <input  id="postal-code-id"type="text" placeholder="Enter Postal Code">
+          <i class="fas fa-search" onclick="searchStores()"></i>
+        </div>
       
+      </div>
+      <div class="stores-list-container">
+        <div class="stores-list">
+         
+          <div class= "store-container">
+           
+          </div>
+
+            
+
+           </div>
+        </div>
+      </div>
+    </div>
+
+<!-- needs to be declared before for initMap function to work -->
+
   </body>
 </html>

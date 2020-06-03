@@ -330,3 +330,14 @@ function displayStores(stores) {
   });
   let a = (document.querySelector(".stores-list").innerHTML = storesHTML);
 }
+
+function setOnClickListener() {
+  var storeElements = document.querySelectorAll(".store-container");
+  // console.log(storeElements);
+  storeElements.forEach((elem, index) => {
+    console.log(elem);
+    elem.addEventListener("click", () => {
+      google.maps.event.trigger(markers[index], "click");
+    });
+  });
+}

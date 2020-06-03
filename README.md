@@ -2,6 +2,8 @@
 
 Starbucks Store Locator that uses HTML, CSS, JavaScript and Google Maps API to display the nearest Starbucks locations in Toronto based off of Postal Code.
 
+- https://starbucks-locator-asmaa.imfast.io/
+
 # Live Demo
 
 ![](https://github.com/asmxali/Starbucks-Locator/blob/master/gif/demo.gif)

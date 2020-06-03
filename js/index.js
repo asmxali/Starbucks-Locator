@@ -295,3 +295,38 @@ function searchStores() {
   showStoreMarker(foundStores);
   setOnClickListener();
 }
+
+function displayStores(stores) {
+  // create a variable to store html
+  let storesHTML = "";
+
+  // loop through the store data
+  stores.forEach((store, index) => {
+    // console.log(store);
+    let address = store.address;
+    let phone = store.phoneNumber;
+    storesHTML += `
+    <div class= "store-container">
+      <div class="store-container-background">
+            
+        <div class="store-info-container">
+                  <div class="store-address">
+                       <span>${address.streetAddressLine1}</span>
+                       <span> ${address.city}, ${
+      address.countrySubdivisionCode
+    } ${address.postalCode.toUpperCase()}</span>
+                   </div>
+                  <div class="store-phone-number">
+                     ${phone}
+                  </div>
+        </div>
+        <div class="store-number-container">
+          <div class="store-number">${index + 1}</div>
+        </div>
+
+      </div>
+    </div>
+    `;
+  });
+  let a = (document.querySelector(".stores-list").innerHTML = storesHTML);
+}

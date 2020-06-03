@@ -1,3 +1,7 @@
+var map;
+var markers = [];
+var infoWindow;
+var toronto = { lat: 43.6532, lng: -79.3832 };
 function initMap() {
   // put this map inside div where id is map
   map = new google.maps.Map(document.getElementById("map"), {
@@ -204,6 +208,10 @@ function initMap() {
       },
     ],
   });
+  infoWindow = new google.maps.InfoWindow();
+  searchStores();
+  showStoreMarker(stores);
+  setOnClickListener();
 }
 
 function showStoreMarker(stores) {
@@ -296,6 +304,24 @@ function searchStores() {
   setOnClickListener();
 }
 
+function clearLocations() {
+  infoWindow.close();
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers.length = 0;
+}
+function setOnClickListener() {
+  var storeElements = document.querySelectorAll(".store-container");
+  // console.log(storeElements);
+  storeElements.forEach((elem, index) => {
+    console.log(elem);
+    elem.addEventListener("click", () => {
+      google.maps.event.trigger(markers[index], "click");
+    });
+  });
+}
+
 function displayStores(stores) {
   // create a variable to store html
   let storesHTML = "";
@@ -329,23 +355,4 @@ function displayStores(stores) {
     `;
   });
   let a = (document.querySelector(".stores-list").innerHTML = storesHTML);
-}
-
-function setOnClickListener() {
-  var storeElements = document.querySelectorAll(".store-container");
-  // console.log(storeElements);
-  storeElements.forEach((elem, index) => {
-    console.log(elem);
-    elem.addEventListener("click", () => {
-      google.maps.event.trigger(markers[index], "click");
-    });
-  });
-}
-
-function clearLocations() {
-  infoWindow.close();
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);
-  }
-  markers.length = 0;
 }

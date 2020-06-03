@@ -205,3 +205,20 @@ function initMap() {
     ],
   });
 }
+
+function showStoreMarker(stores) {
+  var bounds = new google.maps.LatLngBounds();
+  stores.forEach((store, index) => {
+    var latlng = new google.maps.LatLng(
+      store.coordinates.latitude,
+      store.coordinates.longitude
+    );
+    var name = store.name;
+    var address = store.address.streetAddressLine1;
+    var phone = store.phoneNumber;
+    var statusText = "6:00 pm";
+    bounds.extend(latlng);
+    createMarker(latlng, name, address, statusText, phone, index);
+  });
+  map.fitBounds(bounds);
+}

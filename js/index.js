@@ -222,3 +222,52 @@ function showStoreMarker(stores) {
   });
   map.fitBounds(bounds);
 }
+
+function createMarker(latlng, name, address, statusText, phone, index) {
+  var html = `<div class='store-info-window'>
+      <div class='store-info-name'>
+      ${name}
+      </div>
+      <div class='store-info-status'>
+      Open until ${statusText}
+      </div>
+      <div class='store-info-address'>
+      <div class='circle'> 
+      <i class='fas fa-location-arrow' > </i>
+      </div>
+      ${address}
+      </div>
+      <div class='store-info-phone'>
+      <div class='circle'> 
+      <i class='fas fa-phone' > </i>
+      </div>
+
+      ${phone}
+      </div>
+   </div>`;
+
+  let icon = {
+    path: google.maps.SymbolPath.CIRCLE,
+    scale: 8,
+    fillColor: "#61755e8f",
+    fillOpacity: 1,
+    strokeWeight: 4,
+    strokeColor: "#62765f",
+    // scaledSize: new google.maps.Size(85, 40), // scaled size
+    // origin: new google.maps.Point(0, 0), // origin
+    // anchor: new google.maps.Point(0, 0), // anchor
+  };
+
+  var marker = new google.maps.Marker({
+    map: map,
+    animation: google.maps.Animation.BOUNCE,
+    position: latlng,
+    icon: icon,
+  });
+
+  google.maps.event.addListener(marker, "click", function () {
+    infoWindow.setContent(html);
+    infoWindow.open(map, marker);
+  });
+  markers.push(marker);
+}

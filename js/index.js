@@ -271,3 +271,27 @@ function createMarker(latlng, name, address, statusText, phone, index) {
   });
   markers.push(marker);
 }
+
+function searchStores() {
+  let foundStores = [];
+  let searchInput = document
+    .getElementById("postal-code-id")
+    .value.toUpperCase()
+    .substring(0, 3);
+
+  if (searchInput) {
+    stores.forEach((store) => {
+      let postalCode = store.address.postalCode.toUpperCase().substring(0, 3);
+
+      if (searchInput == postalCode) {
+        foundStores.push(store);
+      }
+    });
+  } else {
+    foundStores = stores;
+  }
+  clearLocations();
+  displayStores(foundStores);
+  showStoreMarker(foundStores);
+  setOnClickListener();
+}

@@ -341,3 +341,11 @@ function setOnClickListener() {
     });
   });
 }
+
+function clearLocations() {
+  infoWindow.close();
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers.length = 0;
+}
